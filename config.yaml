@@ -1,0 +1,118 @@
+# ============================================
+# Lyrics MV Pipeline 配置文件
+# ============================================
+
+# ─── 选歌配置 ───
+song_selection:
+  # 模式: auto(全自动) / semi(半自动，推荐后确认) / manual(手动指定)
+  mode: auto
+
+  # 每日出片数
+  daily_count: 2
+
+  # 歌手池（自由扩展，不限于此列表）
+  artists:
+    - 赵雷
+    - 毛不易
+    - 颜人中
+    - 孙燕姿
+    - Beyond
+    - 周杰伦
+    - 邓紫棋
+    - 薛之谦
+    - 李荣浩
+    - 陈奕迅
+    - 林俊杰
+    - 五月天
+    - 张惠妹
+    - 光良
+    - 许巍
+    - 田馥甄
+    - 筷子兄弟
+    - 王力宏
+    - 张震岳
+
+  # 选歌标准（按优先级）
+  criteria:
+    - 传唱度高
+    - 情感共鸣强
+    - 大众熟知
+    - 歌曲真实存在
+
+  # 排除
+  exclude:
+    - 诗词
+    - 口号
+    - 已做过的歌
+
+# ─── 标题/简介风格 ───
+title_style:
+  format: "歌名 - 歌手｜原创引言文案"
+  # 不要加【歌词版MV】
+
+description_style:
+  format: "一句原创引言"
+  rules:
+    - 纯文字
+    - 不加emoji
+    - 不加歌词
+    - 不加专辑信息
+
+# 情感风格映引
+mood_mapping:
+  伤感情歌:
+    style: 深夜emo
+    example: "最怕深夜听懂这首歌"
+  温暖治愈:
+    style: 温暖释怀
+    example: "走累了就回家"
+  怀旧经典:
+    style: 扎心现实
+    example: "有些人一走就是一生"
+  热门流行:
+    style: 热门话题
+    example: "全网都在单曲循环"
+
+# ─── 视频参数 ───
+video:
+  font_family: NotoSansSC
+  font_size: 36
+  font_color: "#f5e6d3"
+  outline_color: "#2d2416"
+  outline_width: 3
+  bg_color: "#1a1512"
+  resolution: "1920x1080"
+  fade_in: 0
+  fade_out: 0
+  audio_bitrate: "320k"
+  typewriter_mode: sync
+
+# ─── 归档 ───
+archive:
+  structure: "archive/{artist}/{date}_{title}_{bvid}/"
+  files:
+    - 音频.flac
+    - 歌词.lrc
+    - 封面.jpg
+    - 视频.mp4
+    - info.json
+
+# ─── 互动配置 ───
+engagement:
+  # 小号互动
+  sub_account:
+    enabled: true
+    actions: [comment, like, favorite]
+    daily_limit: 10
+    interval_seconds: 10
+
+  # 主号互动
+  main_account:
+    enabled: true
+    actions: [danmaku, comment]
+    danmaku_interval: 10
+
+# ─── 定时任务 ───
+schedule:
+  - "0 10 * * *"   # 每天 10:00
+  - "0 18 * * *"   # 每天 18:00

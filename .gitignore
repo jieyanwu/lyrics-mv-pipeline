@@ -1,0 +1,29 @@
+# 敏感文件（绝不提交！）
+.env
+cookies.json
+*.cookie
+*.key
+*.token
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# 生成文件
+archive/
+web_output/
+outputs/
+uploads/
+logs/
+*.log
+
+# 临时文件
+*.tmp
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
